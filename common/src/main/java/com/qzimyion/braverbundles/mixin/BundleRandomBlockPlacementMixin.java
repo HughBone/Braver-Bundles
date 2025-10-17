@@ -38,7 +38,7 @@ public class BundleRandomBlockPlacementMixin extends Item {
 
 	@Override
 	public @NotNull InteractionResult useOn(@NotNull UseOnContext context) {
-		if (context.getLevel().isClientSide) return InteractionResult.CONSUME;
+		if (context.getLevel().isClientSide()) return InteractionResult.CONSUME;
 
 		Player player = context.getPlayer();
 		if (player != null && player.isShiftKeyDown()) {
