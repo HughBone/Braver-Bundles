@@ -3,7 +3,7 @@ package com.qzimyion.braverbundles.mixin;
 import java.util.ArrayList;
 import java.util.List;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;

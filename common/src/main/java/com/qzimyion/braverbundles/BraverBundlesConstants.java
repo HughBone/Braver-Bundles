@@ -1,6 +1,6 @@
 package com.qzimyion.braverbundles;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -17,8 +17,8 @@ public class BraverBundlesConstants {
 	@ApiStatus.Internal
 	@Contract("_ -> new")
 	@NotNull
-	public static ResourceLocation id(String path) {
-		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+	public static Identifier id(String path) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
 
 	@ApiStatus.Internal
