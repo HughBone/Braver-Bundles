@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_authors}"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/user/Qzimyion",
+    "sources": "https://github.com/Qzimyion/Braver-Bundles",
+    "issues": "https://github.com/Qzimyion/Braver-Bundles/issues"
+  },
+  "license": "${mod_license}",
+  "icon": "assets/braverbundles/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.qzimyion.braverbundles.fabric.BraverBundlesFabric"
+    ],
+    "client": [
+      "com.qzimyion.braverbundles.fabric.BraverBundlesFabricClient"
+    ],
+    "modmenu": [
+      "com.qzimyion.braverbundles.fabric.MMIntegration"
+    ]
+  },
+  "mixins": [
+    "braverbundles.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.6",
+    "minecraft": "${minecraft_version}",
+    "java": ">=25",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "midnightlib": ">=${midnightlib_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "Twitter": "https://x.com/Qzimyion",
+        "Bluesky": "https://bsky.app/profile/qzimyion.bsky.social",
+        "modmenu.discord": "https://t.co/mpmPxWxzq1",
+        "modmenu.modrinth": "https://modrinth.com/user/Qzimyion",
+        "modmenu.youtube": "https://www.youtube.com/channel/UCSuyyyXWzsShu0Q41__b2Pw",
+        "GitHub": "https://github.com/Qzimyion",
+        "Tumblr": "https://qzimyion.tumblr.com/"
+      }
+    }
+  }
+}
