@@ -8,9 +8,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.animal.allay.Allay;
+import net.minecraft.world.item.BundleItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -31,7 +31,7 @@ public class AllayWhitelistGoalMixin extends PathfinderMob {
 			return original;
 		}
 		ItemStack heldStack = getItemInHand(InteractionHand.MAIN_HAND);
-		if (!heldStack.is(Items.BUNDLE)) return original;
+		if (!(heldStack.getItem() instanceof BundleItem)) return original;
 		if (original) {
 			BundleContents bundleContents = heldStack.get(DataComponents.BUNDLE_CONTENTS);
 			if (bundleContents == null || bundleContents.isEmpty()) {
