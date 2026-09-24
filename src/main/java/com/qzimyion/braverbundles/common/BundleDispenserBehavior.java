@@ -57,7 +57,7 @@ public class BundleDispenserBehavior implements DispenseItemBehavior {
 		else if (bundleContents != null && CommonModConfig.DISPENSER_ITEM_ENTITY_SCOOPING_IF_BUNDLE_INSIDE) {
 			org.apache.commons.lang3.math.Fraction weight = bundleContents.weight().result().orElse(org.apache.commons.lang3.math.Fraction.ZERO);
 			int space = weight.getDenominator() - weight.getNumerator();
-			BundleContents.Mutable mutable = new BundleContents.Mutable(bundleContents);
+			BundleContents.Mutable mutable = bundleContents.asMutable();
 			int inserted = 0;
 			if (space >= 1) for (ItemEntity itemEntity : itemEntityList) {
 				ItemStack stack = itemEntity.getItem().copy();
@@ -76,7 +76,7 @@ public class BundleDispenserBehavior implements DispenseItemBehavior {
 	}
 
 	private static Optional<ItemStack> removeItemFromBundle(ItemStack bundle, BundleContents bundleContents) {
-		BundleContents.Mutable mutable = new BundleContents.Mutable(bundleContents);
+		BundleContents.Mutable mutable = bundleContents.asMutable();
 		ItemStack removedStack = mutable.removeOne();
 		if (removedStack != null) {
 			bundle.set(DataComponents.BUNDLE_CONTENTS, mutable.toImmutable());

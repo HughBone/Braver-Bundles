@@ -55,13 +55,14 @@ public class BundleRandomBlockPlacementMixin extends Item {
 
 			if (selectedItem.getItem() instanceof BlockItem blockItem) {
 				BlockPlaceContext placeContext = new BlockPlaceContext(player, context.getHand(), selectedItem, ((GetHitResultInvoker) context).invokeGetHitResult());
-				InteractionHand swingingArm = player.swingingArm;
+				// 26.3 removed LivingEntity.swingingArm (replaced by an internal SwingState); swing the hand holding the bundle
+				InteractionHand swingingArm = context.getHand();
 				// This doesn't preserve precise placement behavior of some blocks :(
 				InteractionResult result = blockItem.useOn(placeContext);
 				if (result.consumesAction()) {
 					qzimyions_Bundle_Tweaks$updateBundle(itemInHand, index);
 					BlockState placedBlockState = blockItem.getBlock().defaultBlockState();
-					player.swing(swingingArm);
+					player.swing(swingingArm, itemInHand.getInteractAnimation(), false);
 					SoundType soundType = placedBlockState.getSoundType();
 					Level level = context.getLevel();
 					BlockPos clickedPos = context.getClickedPos();
@@ -105,7 +106,7 @@ public class BundleRandomBlockPlacementMixin extends Item {
 	private static void qzimyions_Bundle_Tweaks$updateBundle(@NotNull ItemStack bundleItemStack, int index) {
 		BundleContents bundleContents = bundleItemStack.get(DataComponents.BUNDLE_CONTENTS);
 		if (bundleContents != null && !bundleContents.isEmpty() && index >= 0 && index < bundleContents.size()) {
-			List<ItemStack> stacks = new ArrayList<>(bundleContents.itemCopyStream().toList());
+			List<ItemStack> stacks = new ArrayList<>(bundleContents.itemCopies().toList());
 			ItemStack stackAtIndex = stacks.get(index).copy();
 			if (stackAtIndex.isEmpty()) {
 				stacks.remove(index);

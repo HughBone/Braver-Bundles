@@ -64,7 +64,7 @@ public abstract class ItemEntityScoopingViaBundleMixin {
 		if (bundleContents == null) return false;
 		org.apache.commons.lang3.math.Fraction weight = bundleContents.weight().result().orElse(org.apache.commons.lang3.math.Fraction.ZERO);
 		int space = weight.getDenominator() - weight.getNumerator();
-		BundleContents.Mutable mutable = new BundleContents.Mutable(bundleContents);
+		BundleContents.Mutable mutable = bundleContents.asMutable();
 		int inserted = 0;
 		if (space >= 1) {
 			ItemStack stack = itemEntity.getItem().copy();
